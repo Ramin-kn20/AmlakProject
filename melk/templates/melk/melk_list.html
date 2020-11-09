@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Amlak</title>
+    <link rel="stylesheet" href="{% static 'List.css' %}">
+</head>
+<body>
+    {% for x in AMLAK %}
+        <h1><a href="{% url 'AMLAKAPP:slug' slug=x.Slug %}">{{ x.Title }}</a></h1>
+        <p>{{ x.show }}</p>
+        <p>{{ x.Publish }}</p>
+    {% endfor %}
+    <div>
+        <form method="post" action="{% url 'USER:logout' %}">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+</body>
+</html>
